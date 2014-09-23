@@ -1,7 +1,7 @@
 {
   "name": "grunt-file-exist",
   "version": "0.0.1",
-  "description": "The best Grunt plugin ever.",
+  "description": "It is a task that you want to check file of a predetermined pattern or are present.",
   "repository": "https://github.com/HAKASHUN/grunt-file-exist.git",
   "author": {
     "name": "HAKASHUN",
