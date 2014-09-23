@@ -1,6 +1,6 @@
 /*
  * grunt-file-exist
- * 
+ *
  *
  * Copyright (c) 2014 HAKASHUN
  * Licensed under the MIT license.
@@ -33,21 +33,26 @@ module.exports = function (grunt) {
 
     // Configuration to be run (and then tested).
     file_exist: {
-      default_options: {
-        options: {
-        },
-        files: {
-          'tmp/default_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
+      options: {
+        output: 'tmp/log.txt'
       },
-      custom_options: {
+      card: {
         options: {
-          separator: ': ',
-          punctuation: ' !!!'
+          patterns: ['l.png', 'm.png', 's.png'],
+          detail: true
         },
-        files: {
-          'tmp/custom_options': ['test/fixtures/testing', 'test/fixtures/123']
-        }
+        src: [
+          'test/fixtures/card/*/'
+        ]
+      },
+      character: {
+        options: {
+          patterns: ['real/l.png', 'real/m.png', 'real/s.png', 'real/body.png'],
+          detail: false
+        },
+        src: [
+          'test/fixtures/character/*'
+        ]
       }
     },
 

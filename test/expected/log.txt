@@ -1,0 +1,4 @@
+test/fixtures/card/sample2/
+  => m.png
+test/fixtures/character/hoge/
+  => real/body.png
