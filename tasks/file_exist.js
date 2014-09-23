@@ -78,8 +78,7 @@ module.exports = function (grunt) {
       }
       log.writeln('------------------------------------------------------');
     });
+    // write log
+    grunt.file.write(outputPath, output);
   });
-
-  // write log
-  grunt.file.write(outputPath, output);
 };
