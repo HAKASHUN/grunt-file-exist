@@ -1,6 +1,6 @@
 # grunt-file-exist
 
-> The best Grunt plugin ever.
+> It is a task that you want to check file of a predetermined pattern or are present.
 
 ## Getting Started
 This plugin requires Grunt.
