@@ -20,13 +20,14 @@ grunt.loadNpmTasks('grunt-file-exist');
 ## The "file_exist" task
 
 ### Overview
-In your project's Gruntfile, add a section named `file_exist` to the data object passed into `grunt.initConfig()`.
+
+In your project's Gruntfile, add a section named file_exist to the data object passed into grunt.initConfig().
 
 ```js
 grunt.initConfig({
   file_exist: {
     options: {
-      output: 'reports/log.txt'
+      output: 'reports/log.txt' //Where the log is output.
     },
     your_target: {
       options: {

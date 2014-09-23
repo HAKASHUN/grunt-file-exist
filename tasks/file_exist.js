@@ -17,13 +17,13 @@ module.exports = function (grunt) {
   var report = function(memo) {
     output += memo + '\n';
   };
+  var globalOptions = grunt.config.get('file_exist').options || {};
+  var outputPath = (globalOptions.output) ? globalOptions.output : 'reports/log.txt';
 
   grunt.registerMultiTask('file_exist', 'The best Grunt plugin ever.', function () {
     var _ = require('lodash');
     var chalk = require('chalk');
     var files = this.filesSrc;
-    var globalOptions = grunt.config.get(this.name).options || {};
-    var outputPath = (globalOptions.output) ? globalOptions.output : 'reports/log.txt';
 
     var options = this.options({
       detail: false
@@ -77,7 +77,9 @@ module.exports = function (grunt) {
         });
       }
       log.writeln('------------------------------------------------------');
-      grunt.file.write(outputPath, output);
     });
   });
+
+  // write log
+  grunt.file.write(outputPath, output);
 };
