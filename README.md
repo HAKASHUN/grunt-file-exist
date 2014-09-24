@@ -1,5 +1,5 @@
 # grunt-file-exist
-
+[![Build Status](https://travis-ci.org/HAKASHUN/grunt-file-exist.svg?branch=master)](https://travis-ci.org/HAKASHUN/grunt-file-exist)
 > It is a task that you want to check file of a predetermined pattern or are present.
 
 ## Getting Started
