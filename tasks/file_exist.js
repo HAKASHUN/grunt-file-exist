@@ -20,6 +20,20 @@ module.exports = function (grunt) {
   var globalOptions = grunt.config.get('file_exist').options || {};
   var outputPath = (globalOptions.output) ? globalOptions.output : 'reports/log.txt';
 
+  var Table = require('cli-table');
+  var table = new Table({
+    chars: {
+      'top': '═' , 'top-mid': '╤' , 'top-left': '╔' , 'top-right': '╗',
+      'bottom': '═' , 'bottom-mid': '╧' , 'bottom-left': '╚' , 'bottom-right': '╝',
+      'left': '║' , 'left-mid': '╟' , 'mid': '─' , 'mid-mid': '┼',
+      'right': '║' , 'right-mid': '╢' , 'middle': '│' },
+    head: ['PATH', 'SUCCESS', 'ERROR'],
+    style: {
+      head: ['yellow']
+    },
+    colWidths: [60, 10, 10]
+  });
+
   grunt.registerMultiTask('file_exist', 'The best Grunt plugin ever.', function () {
     var _ = require('lodash');
     var chalk = require('chalk');
@@ -29,7 +43,6 @@ module.exports = function (grunt) {
       detail: false
     });
 
-    log.writeln('------------------------------------------------------');
     files.forEach(function(filepath){
       if(!grunt.util._.endsWith(filepath, '/')) {
         filepath += '/';
@@ -59,26 +72,21 @@ module.exports = function (grunt) {
         title += chalk.green('✔ ');
       }
       title += filepath;
-      // start output logs
-      log.writeln(title);
 
-      // only detail option logs
-      if(options.detail){
-        log.writeln('  ' + chalk.green('Success') + ': ' + count.success, chalk.red('Error') + ': ' + count.error);
-      }
+      table.push([title, count.success, count.error]);
 
       // output notfound items
       if(hasError) {
         report(filepath);
         _.forEach(errorPatterns, function(path){
-          var errorMsg = '  => ' + path;
+          var errorMsg = '  └ ' + path;
           report(errorMsg);
-          log.writeln(errorMsg);
+          table.push([errorMsg, '', '']);
         });
       }
-      log.writeln('------------------------------------------------------');
     });
     // write log
     grunt.file.write(outputPath, output);
+    log.writeln(table.toString());
   });
 };
