@@ -1,6 +1,6 @@
 {
   "name": "grunt-file-exist",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "It is a task that you want to check file of a predetermined pattern or are present.",
   "repository": "https://github.com/HAKASHUN/grunt-file-exist.git",
   "author": {
